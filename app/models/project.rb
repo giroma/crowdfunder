@@ -6,5 +6,4 @@ class Project < ActiveRecord::Base
 
   validates :user_id, presence: true
   validates :title, :description, :goal, :start_date, :end_date, presence: true
-  validates :user_id, presence: true
 end
