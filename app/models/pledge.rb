@@ -8,9 +8,10 @@ class Pledge < ApplicationRecord
   validates :user, presence: true
   validate :owner_cannot_back_own_project
 
+
   def owner_cannot_back_own_project
     if project.user == user
-      errors.add(:user, 'You can not back your own project')
+      errors.add(:user_id, "Owner cant pledge")
     end
   end
 end
