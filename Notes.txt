@@ -24,7 +24,10 @@ Add error messages
 
 Accounts (Michelle)
 MUST HAVE
-As a user I should be able to visit my profile page and see a list of all the projects I have backed, the total amount I have pledged on the site, and a list of all the projects I own
+√ As a user I should be able to visit my profile page
+√ and see a list of all the projects I have backed,
+√ the total amount I have pledged on the site,
+√ and a list of all the projects I own
 
 
 COULD HAVE

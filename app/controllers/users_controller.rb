@@ -21,6 +21,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @pledges = Pledge.where(user_id: current_user)
+    @projects = Project.where(user_id: current_user)
   end
 
 end
