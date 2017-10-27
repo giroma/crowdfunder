@@ -5,7 +5,7 @@ class Reward < ActiveRecord::Base
   validate :must_be_positive
 
   def must_be_positive
-    if dollar_amount < 0
+    if dollar_amount.present? && dollar_amount < 0
       errors.add(:dollar_amount, "Project's goal must be positive number")
     end
   end
