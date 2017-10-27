@@ -31,7 +31,7 @@ MUST HAVE
 
 
 COULD HAVE
-As a user, when I go to a project’s page, I should be able to see who the project’s owner is and follow a link to their profile page to see what other projects they own and have backed
+√ As a user, when I go to a project’s page, I should be able to see who the project’s owner is and follow a link to their profile page to see what other projects they own and have backed
 
 
 
