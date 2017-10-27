@@ -22,7 +22,7 @@ Add error messages
 
 
 
-Accounts
+Accounts (Michelle)
 MUST HAVE
 As a user I should be able to visit my profile page and see a list of all the projects I have backed, the total amount I have pledged on the site, and a list of all the projects I own
 
@@ -32,7 +32,7 @@ As a user, when I go to a project’s page, I should be able to see who the proj
 
 
 
-Project page
+Project page (Horacio)
 
 MUST HAVE
 As a user, when I go to a project’s page, I should see how much money has been pledged so far
@@ -62,7 +62,7 @@ As a backer, when I go to the page of a project I have backed, I should see all 
 As a user, when I go to the page of a fully funded project that is past its deadline that I have not backed, I should only see updates about that project from before the funding deadline. Updates for funded projects that were made after funding ended are for backers’ (and the owner’s) eyes only.
 
 
-Categories
+Categories (Ari)
 MUST HAVE
 
 COULD HAVE
