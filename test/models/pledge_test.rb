@@ -35,6 +35,7 @@ class PledgeTest < ActiveSupport::TestCase
     pledge.user = owner
     pledge.save
     assert pledge.invalid?, 'Dollar amount must be positive'
+    assert pledge.new_record?, 'Reward should not save with a negative dollar amount'
   end
 
   def new_project
