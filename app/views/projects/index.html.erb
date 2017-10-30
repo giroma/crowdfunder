@@ -1,5 +1,9 @@
 <%= link_to "New Project", new_project_path %>
 
+  <% if current_user %>
+  <%= link_to "My Page", user_path(current_user) %>
+  <% end %>
+
 <% @projects.each do |project| %>
   <article class="project">
     <%= link_to project, class: 'project-link' do %>
