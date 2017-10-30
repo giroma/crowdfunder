@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @user = @project.user_id
-    # @money_pledged = Pledge.all.where(project_id: @project)
+    @pledgers = @project.users
     @total_pledged = Pledge.where(project_id: @project).pluck(:dollar_amount).sum
   end
 

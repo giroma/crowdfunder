@@ -1,4 +1,16 @@
-<h1><%= @project.title %></h1>
+  <h1><%= @project.title %></h1>
+  
+<% if current_user == @project.user %>
+  <h1>Welcome back, <%= current_user.first_name %>!</h1>
+  <h2>Here's how your project's doing so far...</h2>
+  <h3>People who have backed your project</h3>
+  <ul>
+    <% @pledgers.each do |pledger| %>
+      <li><%= pledger.first_name %> <%= pledger.last_name %></li>
+    <% end  %>
+  </ul>
+    <hr />
+<% end  %>
 
 <% if @project.image.present? %>
   <%= image_tag @project.image %>

@@ -18,24 +18,16 @@ Add error messages
   √ sign up, and
   √ login forms so that if any validations fail the user can see what went wrong
 
-
-
-
-
-
-
-<<<<<<< HEAD
 Accounts
 MUST HAVE (Michelle)
 As a user I should be able to visit my profile page and see a list of all the projects I have backed, the total amount I have pledged on the site, and a list of all the projects I own
-=======
+
 Accounts (Michelle)
 MUST HAVE
 √ As a user I should be able to visit my profile page
 √ and see a list of all the projects I have backed,
 √ the total amount I have pledged on the site,
 √ and a list of all the projects I own
->>>>>>> 3076095f29160dc2b2584f03dfcfbd4de2eb94c7
 
 
 COULD HAVE
@@ -61,7 +53,7 @@ MUST HAVE
 
 
 COULD HAVE
-As a project owner, when I go to my project’s page, I should see a list of who has backed my project
+√ As a project owner, when I go to my project’s page, I should see a list of who has backed my project
 As a backer I should be able to leave a comment on a project I have backed
 
 As a project owner, when I go to my project’s page, I should see a summary of how many rewards have been claimed
