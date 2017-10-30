@@ -1,6 +1,6 @@
 class RewardsController < ApplicationController
   before_action :load_project
-
+  before_action :ensure_logged_in
   def new
     @reward = Reward.new
   end
