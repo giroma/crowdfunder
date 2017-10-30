@@ -23,7 +23,7 @@ class Project < ActiveRecord::Base
   end
 
   def must_be_positive
-    if goal < 0
+    if goal <= 0
       errors.add(:goal, "Project's goal must be positive number")
     end
   end
