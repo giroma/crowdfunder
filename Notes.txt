@@ -8,6 +8,8 @@ MUST HAVE
 √ Reward dollar_amount must be positive number
 √ Project end date must be later than start date
 
+As a user you can't remove or add an award unless is your own project (Horacio)
+
 
 COULD HAVE
 Add error messages
@@ -23,7 +25,7 @@ Add error messages
 
 
 Accounts
-MUST HAVE
+MUST HAVE (Michelle)
 As a user I should be able to visit my profile page and see a list of all the projects I have backed, the total amount I have pledged on the site, and a list of all the projects I own
 
 
@@ -34,7 +36,7 @@ As a user, when I go to a project’s page, I should be able to see who the proj
 
 Project page
 
-MUST HAVE
+MUST HAVE (Horacio)
 As a user, when I go to a project’s page, I should see how much money has been pledged so far
 
 
@@ -65,7 +67,7 @@ As a user, when I go to the page of a fully funded project that is past its dead
 Categories
 MUST HAVE
 
-COULD HAVE
+COULD HAVE (Ari)
 Add a category model (eg. technology, art) and the ability to create a project under a specific category
 Users should be able to browse projects by category
 
