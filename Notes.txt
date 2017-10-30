@@ -53,7 +53,7 @@ MUST HAVE
 
 
 COULD HAVE
-As a project owner, when I go to my project’s page, I should see a list of who has backed my project
+√ As a project owner, when I go to my project’s page, I should see a list of who has backed my project
 As a backer I should be able to leave a comment on a project I have backed
 
 As a project owner, when I go to my project’s page, I should see a summary of how many rewards have been claimed
