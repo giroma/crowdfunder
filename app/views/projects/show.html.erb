@@ -7,7 +7,7 @@
   <h3>People who have backed your project</h3>
   <ul>
     <% @pledgers.each do |pledger| %>
-      <li><%= pledger.first_name %></li>
+      <li><%= pledger.first_name %> <%= pledger.last_name %></li>
     <% end  %>
   </ul>
     <hr />
