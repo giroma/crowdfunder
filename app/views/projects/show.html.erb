@@ -1,7 +1,6 @@
-<% if current_user == nil %>
   <h1><%= @project.title %></h1>
-<% else  %>
-  <h1><%= @project.title %></h1>
+  
+<% if current_user == @project.user %>
   <h1>Welcome back, <%= current_user.first_name %>!</h1>
   <h2>Here's how your project's doing so far...</h2>
   <h3>People who have backed your project</h3>
