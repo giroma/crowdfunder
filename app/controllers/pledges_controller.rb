@@ -7,6 +7,7 @@ class PledgesController < ApplicationController
     @pledge = @project.pledges.build
     @pledge.dollar_amount = params[:pledge][:dollar_amount]
     @pledge.user = current_user
+    @user = @project.user_id
 
     if @pledge.save
       redirect_to project_url(@project), notice: "You have successfully backed #{@project.title}!"
@@ -15,5 +16,5 @@ class PledgesController < ApplicationController
       render 'projects/show'
     end
   end
-  
+
 end
