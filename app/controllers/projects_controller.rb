@@ -9,7 +9,12 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @user = @project.user_id
-    @pledgers = @project.users
+    @pledgers = @project.users # gives me all the users that pledged the specific project
+    @pledger = Pledge.where(user_id: current_user)
+
+    @comments = @project.comments
+    @comment = Comment.new
+
     @total_pledged = Pledge.where(project_id: @project).pluck(:dollar_amount).sum
     rescue ActiveRecord::RecordNotFound
       redirect_to(root_url, :alert => 'Record not found')
