@@ -1,5 +1,7 @@
   <h1><%= @project.title %></h1>
-
+  <time class="project-days-left">
+    <%= icon('clock-o') %>
+    <%= "#{time_ago_in_words(@project.end_date)} #{( @project.end_date > Time.now.utc ) ? 'remaining' : 'past deadline'}" %></time>
 <% if current_user == @project.user %>
   <h1>Welcome back, <%= current_user.first_name %>!</h1>
   <h2>Here's how your project's doing so far...</h2>
@@ -43,7 +45,7 @@
     </p>
   <% end %>
 <% end %>
-<% if current_user.id == @project.user_id %>
+<% if current_user != nil && current_user.id == @project.user_id %>
 <%= link_to "Add new reward", new_project_reward_path(@project) %>
 <% end %>
   <h2>Project Comments</h2>

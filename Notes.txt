@@ -8,7 +8,9 @@ MUST HAVE
 √ Reward dollar_amount must be positive number
 √ Project end date must be later than start date
 
-As a user you can't remove or add an award unless is your own project (Horacio)
+√ As a user you can't remove or add an award unless is your own project (Horacio)
+
+Authorizations:
 
 
 COULD HAVE
@@ -20,7 +22,7 @@ Add error messages
 
 Accounts
 MUST HAVE (Michelle)
-As a user I should be able to visit my profile page and see a list of all the projects I have backed, the total amount I have pledged on the site, and a list of all the projects I own
+√ As a user I should be able to visit my profile page and see a list of all the projects I have backed, the total amount I have pledged on the site, and a list of all the projects I own
 
 Accounts (Michelle)
 MUST HAVE
@@ -38,12 +40,12 @@ COULD HAVE
 Project page (Horacio)
 
 MUST HAVE (Horacio)
-As a user, when I go to a project’s page, I should see how much money has been pledged so far
+√ As a user, when I go to a project’s page, I should see how much money has been pledged so far
 
 
 COULD HAVE
 As a user, when I go to a project’s page, it should tell me if I have already backed that project or not
-As a user, when I go to a project’s page, it should tell me how much time is left until the funding deadline (like it does on the project index currently)
+√ As a user, when I go to a project’s page, it should tell me how much time is left until the funding deadline (like it does on the project index currently)
 
 
 
@@ -76,7 +78,7 @@ NICE TO HAVE
 
 Homepage (Ari)
 COULD HAVE
-Create a home page for the app that shows a summary of how many projects have been started, how many have been funded, how much money has been pledged towards successful projects in total
+√ Create a home page for the app that shows a summary of how many projects have been started, how many have been funded, how much money has been pledged towards successful projects in total
 
 
 Search (Ari)
