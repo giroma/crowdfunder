@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :projects
   has_many :comments
 
-  validates :password, length: { minimum: 8 }, on: :create
+  validates :password, length: { minimum: 1 }, on: :create
   validates :password, confirmation: true, on: :create
   validates :password_confirmation, presence: true, on: :create
 
