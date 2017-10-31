@@ -36,18 +36,16 @@
   <% if current_user == nil %>
 
   <% elsif current_user.id == @project.user_id %>
-
-  <p>
-    <small>
-      <%= link_to "Remove reward", project_reward_path(@project, reward), method: 'delete' %>
-    </small>
-  </p>
-
-
+    <p>
+      <small>
+        <%= link_to "Remove reward", project_reward_path(@project, reward), method: 'delete' %>
+      </small>
+    </p>
+  <% end %>
+<% end %>
+<% if current_user.id == @project.user_id %>
 <%= link_to "Add new reward", new_project_reward_path(@project) %>
 <% end %>
-<% end %>
-
   <h2>Project Comments</h2>
   <ul>
     <% @project.comments.each do |comment| %>
