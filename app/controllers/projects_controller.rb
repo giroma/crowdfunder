@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
 
     @total_pledged = Pledge.where(project_id: @project).pluck(:dollar_amount).sum
     rescue ActiveRecord::RecordNotFound
-      redirect_to(root_url, :alert => 'Record not found')
+      redirect_to(root_url, :alert => 'Project not found')
   end
 
   def new
