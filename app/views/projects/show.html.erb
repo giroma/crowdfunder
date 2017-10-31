@@ -62,7 +62,7 @@
   </ul>
 
 <!-- comment form only displays if user pledged project -->
-<% if @pledger.pluck(:project_id).include?(@project.id) %>
+<% if @pledger != nil && @pledger.pluck(:project_id).include?(@project.id) %>
   <h4>New Comment</h4>
   <%= render '/comments/form', comment: @comment %>
 <% end %>
