@@ -3,7 +3,9 @@
   <% if current_user %>
   <%= link_to "My Page", user_path(current_user) %>
   <% end %>
-<%= "#{@projects.count} created " %>
+<%= "#{@projects.count} created, " %>
+<%= "#{@projects_funded} funded, " %>
+<%= "$#{@total_funding} pledged " %>
 <% @projects.each do |project| %>
   <article class="project">
     <%= link_to project, class: 'project-link' do %>
