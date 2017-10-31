@@ -4,6 +4,8 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.all
     @projects = @projects.order(:end_date)
+    @projects_funded = Pledge.pluck(:project_id).uniq.count
+    @total_funding = Pledge.all.pluck(:dollar_amount).sum
   end
 
   def show
