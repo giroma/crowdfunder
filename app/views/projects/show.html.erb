@@ -27,6 +27,26 @@
 <p>Deadline: <%= @project.end_date.strftime("%A %b %d %Y") %></p>
 <%= link_to "Check out the owner's page", user_path(@user) %>
 <p>Total Pledged: $<%= @total_pledged %></p>
+
+
+<!-- OWNER UPDATES -->
+<h2>Check out the latest updates on <%= @project.title %>!</h2>
+<ul>
+  <% @project_updates.each do |project_update| %>
+    <li>
+      <p><%= project_update.project_update %></p>
+      <p>Posted on: <%= project_update.created_at %></p>
+      <% if current_user != nil && current_user == @project.user %>
+        <p><%= link_to "Edit Comment", edit_project_owner_update_path(@project, project_update)%> | <%= link_to "Delete", project_owner_update_path(@project, project_update), method: :delete, data: {confirm: "Are you sure you want to delete this review?" } %> </p>
+      <% end %>
+    </li>
+    <% end %>
+</ul>
+<% if current_user != nil && current_user == @project.user %>
+  <%= render '/owner_updates/form', project_update: @project_update %>
+<% end %>
+
+<!-- PLEDGES -->
 <%= form_for [@project, Pledge.new] do |f| %>
   <%= f.number_field :dollar_amount, value: @project.rewards.minimum(:dollar_amount), step: 0.01 %>
   <%= f.submit "Pledge" %>
