@@ -10,7 +10,8 @@ Project.destroy_all
               goal: rand(100000),
               start_date: Time.now.utc - rand(60).days,
               end_date: Time.now.utc + rand(10).days,
-              user_id: rand(1..5)
+              user_id: rand(1..5),
+              image: "https://picsum.photos/1280/720?image=#{rand(100..200)}"
             )
 
   5.times do
