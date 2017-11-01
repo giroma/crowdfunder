@@ -32,7 +32,7 @@
 <!-- OWNER UPDATES -->
 <h2>Check out the latest updates on <%= @project.title %>!</h2>
 <ul>
-  <% @project_updates.each do |project_update| %>
+  <% @project_updates.reverse_each do |project_update| %>
     <li>
       <p><%= project_update.project_update %></p>
       <p>Posted on: <%= project_update.created_at %></p>
