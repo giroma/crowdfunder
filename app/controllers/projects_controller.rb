@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @user = @project.user_id
     @pledgers = @project.users # gives me all the users that pledged the specific project
-    @pledger = Pledge.where(user_id: current_user)
+    @pledger = Pledge.where(user_id: current_user).where(project_id: @project)
 
     #  PLEDGER COMMENTS
     @comments = @project.comments

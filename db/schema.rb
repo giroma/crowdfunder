@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101152038) do
+ActiveRecord::Schema.define(version: 20171101155610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.text "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -55,6 +61,8 @@ ActiveRecord::Schema.define(version: 20171101152038) do
     t.datetime "updated_at"
     t.string "image"
     t.integer "user_id"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_projects_on_category_id"
   end
 
   create_table "rewards", id: :serial, force: :cascade do |t|
@@ -82,4 +90,5 @@ ActiveRecord::Schema.define(version: 20171101152038) do
   add_foreign_key "owner_updates", "users"
   add_foreign_key "pledges", "projects"
   add_foreign_key "pledges", "users"
+  add_foreign_key "projects", "categories"
 end

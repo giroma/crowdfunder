@@ -1,11 +1,3 @@
-<%= link_to "New Project", new_project_path %>
-
-  <% if current_user %>
-  <%= link_to "My Page", user_path(current_user) %>
-  <% end %>
-<%= "#{@projects.count} created, " %>
-<%= "#{@projects_funded} funded, " %>
-<%= "$#{@total_funding} pledged " %>
 <% @projects.each do |project| %>
   <article class="project">
     <%= link_to project, class: 'project-link' do %>
@@ -17,7 +9,6 @@
         <% end %>
       </figure>
       <h1 class="project-title"><%= project.title %></h1>
-      <h2>Category: <%= project.category.name %></h2>
       <time class="project-days-left">
         <%= icon('clock-o') %>
         <%= "#{time_ago_in_words(project.end_date)} #{( project.end_date > Time.now.utc ) ? 'remaining' : 'past deadline'}" %></time>

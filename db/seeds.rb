@@ -3,6 +3,12 @@ Reward.destroy_all
 User.destroy_all
 Project.destroy_all
 
+categories = ['Art', 'Comics', 'Crafts', 'Dance', 'Design', 'Fashion', 'Film & Video', 'Food', 'Games', 'Journalism', 'Music', 'Photography', 'Publishing', 'Technology', 'Theater']
+
+categories.each do |category|
+  Category.create(name: category)
+end
+
 10.times do
   project = Project.create!(
               title: Faker::App.name,
@@ -11,7 +17,8 @@ Project.destroy_all
               start_date: Time.now.utc - rand(60).days,
               end_date: Time.now.utc + rand(10).days,
               user_id: rand(1..5),
-              image: "https://picsum.photos/1280/720?image=#{rand(100..200)}"
+              image: "https://picsum.photos/1280/720?image=#{rand(100..200)}",
+              category_id: rand(1..15)
             )
 
   5.times do

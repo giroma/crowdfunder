@@ -9,9 +9,9 @@
   <ul>
     <%# CHECK IF WE CAN IMPROVE LOGIC BEHIND %>
     <% if @pledgers != nil %>
-    <% @pledgers.each do |pledger| %>
-      <li><%= pledger.first_name %> <%= pledger.last_name %></li>
-    <% end  %>
+      <% @pledgers.each do |pledger| %>
+        <li><%= pledger.first_name %> <%= pledger.last_name %></li>
+      <% end  %>
     <% end %>
   </ul>
     <hr />
@@ -45,6 +45,11 @@
 <% if current_user != nil && current_user == @project.user %>
   <%= render '/owner_updates/form', project_update: @project_update %>
 <% end %>
+
+<p><% if @pledger.present? %>
+  <%= 'You have backed this project' %>
+<% end %>
+</p>
 
 <!-- PLEDGES -->
 <%= form_for [@project, Pledge.new] do |f| %>
