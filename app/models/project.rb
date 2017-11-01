@@ -4,6 +4,7 @@ class Project < ActiveRecord::Base
   has_many :comments
   has_many :users, through: :pledges # backers
   belongs_to :user # project owner
+  belongs_to :category
 
   validates :user_id, presence: true
   validates :title, :description, :goal, :start_date, :end_date, presence: true
