@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :projects
   has_many :comments
   has_many :owner_updates
+  has_many :claims
 
   validates :password, length: { minimum: 1 }, on: :create
   validates :password, confirmation: true, on: :create

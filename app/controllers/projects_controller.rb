@@ -22,6 +22,10 @@ class ProjectsController < ApplicationController
     @project_updates = @project.owner_updates
     @project_update = OwnerUpdate.new
 
+    # CLAIMS
+    @claims = @project.claims
+    @claim = Claim.new
+
     @total_pledged = Pledge.where(project_id: @project).pluck(:dollar_amount).sum
     rescue ActiveRecord::RecordNotFound
       redirect_to(root_url, :alert => 'Project not found')

@@ -107,6 +107,26 @@
   <%= f.submit "Pledge" %>
 <% end %>
 
+<!-- REWARDS -->
+<h2>Rewards</h2>
+<% @project.rewards.each do |reward| %>
+  <p><%= number_to_currency(reward.dollar_amount) %></p>
+  <p><%= reward.description %></p>
+
+  <% if current_user == nil %>
+
+  <% elsif current_user.id == @project.user_id %>
+    <p>
+      <small>
+        <%= link_to "Remove reward", project_reward_path(@project, reward), method: 'delete' %>
+      </small>
+    </p>
+  <% end %>
+<% end %>
+
+<% if current_user != nil && current_user.id == @project.user_id %>
+<%= link_to "Add new reward", new_project_reward_path(@project) %>
+<% end %>
   <h2>Project Comments</h2>
   <ul>
     <% @project.comments.each do |comment| %>

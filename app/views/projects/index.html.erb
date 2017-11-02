@@ -38,7 +38,7 @@
         <% end %>
       </figure>
       <h1 class="project-title"><%= project.title %></h1>
-      <h2>Category: <%= project.category.name %></h2>
+      <h5> <a href= "<%= search_index_path %>" > Category: <%= project.category.name %></a></h5>
       <time class="project-days-left">
         <%= icon('clock-o') %>
         <%= "#{time_ago_in_words(project.end_date)} #{( project.end_date > Time.now.utc ) ? 'remaining' : 'past deadline'}" %></time>

@@ -1,4 +1,6 @@
 class Reward < ActiveRecord::Base
+  has_many :claims
+
   belongs_to :project
 
   validates :description, :dollar_amount, presence: true
