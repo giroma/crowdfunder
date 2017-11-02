@@ -59,6 +59,7 @@ class ProjectsController < ApplicationController
 
     @project.image = params[:project][:image]
     @project.user_id = current_user.id
+    @project.category_id = params[:project][:category_id]
 
     if @project.save
       redirect_to root_url
