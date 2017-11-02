@@ -12,7 +12,7 @@ class PledgesController < ApplicationController
     if @pledge.save
       # find eligible rewards and save the claim if found
       @rewards = @project.rewards
-      eligible_rewards = @rewards.where("dollar_amount < ?", @pledge.dollar_amount)
+      eligible_rewards = @rewards.where("dollar_amount <= ?", @pledge.dollar_amount)
       if eligible_rewards.any?
         @claim = Claim.new
         @reward = eligible_rewards.max_by{|reward| reward.dollar_amount}
