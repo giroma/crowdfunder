@@ -12,7 +12,7 @@
             <span>funded</span>
           </div>
           <div class="time-left">
-            <h3><%= "$#{@total_funding}" %></h3>
+            <h3><%= "$#{@total_funding.to_i}" %></h3>
             <span>pledged</span>
           </div>
           <div class="reminder last">
@@ -38,7 +38,7 @@
         <% end %>
       </figure>
       <h1 class="project-title"><%= project.title %></h1>
-      <h5> <a href= "<%= search_index_path %>" > Category: <%= project.category.name %></a></h5>
+      <h5> <a href= "<%= search_index_path%>?utf8=✓&search%5Binput%5D=<%=project.category.name%>&commit=Search" > Category: <%= project.category.name %></a></h5>
       <time class="project-days-left">
         <%= icon('clock-o') %>
         <%= "#{time_ago_in_words(project.end_date)} #{( project.end_date > Time.now.utc ) ? 'remaining' : 'past deadline'}" %></time>
