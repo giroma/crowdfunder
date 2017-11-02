@@ -9,7 +9,7 @@ categories.each do |category|
   Category.create(name: category)
 end
 
-10.times do
+20.times do
   project = Project.create!(
               title: Faker::App.name,
               description: Faker::Lorem.paragraph,
@@ -17,11 +17,11 @@ end
               start_date: Time.now.utc - rand(60).days,
               end_date: Time.now.utc + rand(10).days,
               user_id: rand(1..5),
-              image: "https://picsum.photos/1280/720?image=#{rand(100..200)}",
+              image: "https://picsum.photos/1280/720?image=#{rand(2..100)}",
               category_id: rand(1..15)
             )
 
-  5.times do
+  10.times do
     project.rewards.create!(
       description: Faker::Superhero.power,
       dollar_amount: rand(100),
@@ -39,7 +39,7 @@ end
   )
 end
 
-20.times do
+40.times do
   project = Project.all.sample
 
   Pledge.create!(
