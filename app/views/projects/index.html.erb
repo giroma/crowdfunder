@@ -1,11 +1,32 @@
-<%= link_to "New Project", new_project_path %>
 
-  <% if current_user %>
-  <%= link_to "My Page", user_path(current_user) %>
-  <% end %>
-<%= "#{@projects.count} created, " %>
-<%= "#{@projects_funded} funded, " %>
-<%= "$#{@total_funding} pledged " %>
+  <header class="header">
+    <div class="container">
+      <div class="row">
+        <div class="goal-summary pull-left">
+          <div class="backers">
+            <h3><%= "#{@projects.count}" %></h3>
+            <span>created</span>
+          </div>
+          <div class="funded">
+            <h3><%= "#{@projects_funded}" %></h3>
+            <span>funded</span>
+          </div>
+          <div class="time-left">
+            <h3><%= "$#{@total_funding}" %></h3>
+            <span>pledged</span>
+          </div>
+          <div class="reminder last">
+            <a href="<%= new_project_path %>"><i class="fa fa-star"></i> New Project</a>
+          </div>
+          <%if current_user %>
+          <div class="reminder last">
+            <a href="<%= user_path(current_user) %>"><i class="fa fa-star"></i> My Page</a>
+          </div>
+          <%end %>
+        </div>
+      </div>
+    </div>
+  </header>
 <% @projects.each do |project| %>
   <article class="project">
     <%= link_to project_path(project), class: 'project-link' do %>

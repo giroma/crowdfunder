@@ -14,8 +14,13 @@ class ProjectsController < ApplicationController
     @pledgers = @project.users # gives me all the users that pledged the specific project
     @pledger = Pledge.where(user_id: current_user).where(project_id: @project)
 
+    #  PLEDGER COMMENTS
     @comments = @project.comments
     @comment = Comment.new
+
+    # OWNER UPDATES
+    @project_updates = @project.owner_updates
+    @project_update = OwnerUpdate.new
 
     @total_pledged = Pledge.where(project_id: @project).pluck(:dollar_amount).sum
     rescue ActiveRecord::RecordNotFound

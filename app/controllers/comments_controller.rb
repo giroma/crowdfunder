@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
     @project = Project.find(params[:project_id])
     @comment.comment = params[:comment][:comment]
     @comment.project = @project
+    @comment.user_id = current_user.id
 
     if @comment.save
       flash.notice = "Comment has been successfully created."
