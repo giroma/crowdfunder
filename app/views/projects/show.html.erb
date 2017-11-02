@@ -34,11 +34,11 @@
   </div>
   <div class="content col-md-4 col-sm-12 col-xs-12">
     <div class="section-block">
-    <h3>Goal: <span class="label label-success"><%= number_to_currency(@project.goal) %></span></h3>
+    <h3>Goal: <span class="label label-success"><%= number_to_currency(@project.goal.to_i) %></span></h3>
     <h5>Fundraising starts: <%= @project.start_date.strftime("%A %b %d %Y") %></h5>
     <h5>Deadline: <%= @project.end_date.strftime("%A %b %d %Y") %></h5>
 
-    <h4>Total Pledged: <span class="label label-primary">$<%= @total_pledged %></span></h4>
+    <h4>Total Pledged: <span class="label label-primary">$<%= @total_pledged.to_i %></span></h4>
     <div class="progress" style="width: 50%;">
   <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="<%=@progress_bar%>" aria-valuemin="0" aria-valuemax="100" style="width: <%=@progress_bar%>%;">
   </div>
