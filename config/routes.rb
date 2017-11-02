@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :rewards, only: [:new, :create, :destroy]
     resources :comments, except: [:index, :new, :show]
     resources :owner_updates, except: [:index, :new, :show]
+    resources :claims, only: [:create]
   end
   resources :users, only: [:new, :create, :show]
   resources :user_sessions, only: [:create]
