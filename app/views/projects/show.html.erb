@@ -56,10 +56,13 @@
   <%= f.number_field :dollar_amount, value: @project.rewards.minimum(:dollar_amount), step: 0.01 %>
   <%= f.submit "Pledge" %>
 <% end %>
+
+<!-- REWARDS -->
 <h2>Rewards</h2>
 <% @project.rewards.each do |reward| %>
   <p><%= number_to_currency(reward.dollar_amount) %></p>
   <p><%= reward.description %></p>
+
   <% if current_user == nil %>
 
   <% elsif current_user.id == @project.user_id %>
@@ -70,6 +73,7 @@
     </p>
   <% end %>
 <% end %>
+
 <% if current_user != nil && current_user.id == @project.user_id %>
 <%= link_to "Add new reward", new_project_reward_path(@project) %>
 <% end %>
