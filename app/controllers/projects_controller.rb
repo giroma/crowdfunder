@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
     @user = @project.user_id
     @pledgers = @project.users # gives me all the users that pledged the specific project
     @pledger = Pledge.where(user_id: current_user).where(project_id: @project)
-
+    @progress_bar = (@project.pledges.sum(:dollar_amount) / @project.goal) * 100
     #  PLEDGER COMMENTS
     @comments = @project.comments
     @comment = Comment.new
@@ -62,6 +62,13 @@ class ProjectsController < ApplicationController
       flash.now[:alert] = @project.errors.full_messages
       render :new
     end
+   end
+
+
+   private
+
+   def progress_bar
+     @project.goal - (@pro)
    end
 
 end

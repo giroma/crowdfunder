@@ -1,34 +1,62 @@
-  <h1><%= @project.title %></h1>
-  <time class="project-days-left">
-    <%= icon('clock-o') %>
-    <%= "#{time_ago_in_words(@project.end_date)} #{( @project.end_date > Time.now.utc ) ? 'remaining' : 'past deadline'}" %></time>
-<% if current_user == @project.user %>
-  <h1>Welcome back, <%= current_user.first_name %>!</h1>
-  <h2>Here's how your project's doing so far...</h2>
-  <h3>People who have backed your project</h3>
-  <ul>
-    <%# CHECK IF WE CAN IMPROVE LOGIC BEHIND %>
-    <% if @pledgers != nil %>
-      <% @pledgers.each do |pledger| %>
-        <li><%= pledger.first_name %> <%= pledger.last_name %></li>
-      <% end  %>
-    <% end %>
-  </ul>
-    <hr />
-<% end  %>
 <div class="row">
-  <div class="col-sm-8">
+  <div class="content col-md-8 col-sm-12 col-xs-12">
+    <div class="section-block">
+      <div class="funding-meta">
+        <h1><%= @project.title %></h1>
+        <span class="type-meta"><i class="fa fa-tag"></i> <%= @project.category.name %></span>
+        <span class="type-meta"><i class="fa fa-user"></i><%= link_to "Check out the owner's page", user_path(@user) %></span>
+        <time class="project-days-left">
+          <%= icon('clock-o') %>
+          <%= "#{time_ago_in_words(@project.end_date)} #{( @project.end_date > Time.now.utc ) ? 'remaining' : 'past deadline'}" %></time>
     <% if @project.image.present? %>
       <%= image_tag @project.image %>
     <% end %>
+    <h4><%= @project.description %></h4>
   </div>
-  <div class="col-sm-4">
-    <h2>Rewards</h2>
-    <% @project.rewards.each do |reward| %>
-      <p><%= number_to_currency(reward.dollar_amount) %></p>
-      <p><%= reward.description %></p>
-      <% if current_user == nil %>
+  </div>
+    <% if current_user == @project.user %>
+    <div class="section-block">
+      <h1 class="section-title">Welcome back, <%= current_user.first_name %>!</h1>
+      <hr />
+      <h3>Here's how your project's doing so far...</h3>
+      <h4>People who have backed your project</h4>
+      <ul>
+        <%# CHECK IF WE CAN IMPROVE LOGIC BEHIND %>
+        <% if @pledgers != nil %>
+          <% @pledgers.each do |pledger| %>
+            <li><%= pledger.first_name %> <%= pledger.last_name %></li>
+          <% end  %>
+        <% end %>
+      </ul>
 
+    </div>
+    <% end  %>
+  </div>
+  <div class="content col-md-4 col-sm-12 col-xs-12">
+    <div class="section-block">
+    <h3>Goal: <span class="label label-success"><%= number_to_currency(@project.goal) %></span></h3>
+    <h5>Fundraising starts: <%= @project.start_date.strftime("%A %b %d %Y") %></h5>
+    <h5>Deadline: <%= @project.end_date.strftime("%A %b %d %Y") %></h5>
+
+    <h4>Total Pledged: <span class="label label-primary">$<%= @total_pledged %></span></h4>
+    <div class="progress" style="width: 50%;">
+  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="<%=@progress_bar%>" aria-valuemin="0" aria-valuemax="100" style="width: <%=@progress_bar%>%;">
+  </div>
+  </div>
+  <span class="goal-progress"><strong><%=@progress_bar.to_i %>% Complete</strong></span>
+  <div class="sign-up-form">
+  <%= form_for [@project, Pledge.new] do |f| %>
+    <%= f.number_field :dollar_amount, value: @project.rewards.minimum(:dollar_amount), step: 1, class: "signup-input" %>
+    <%= f.submit "Pledge", class: "btn btn-launch" %>
+  <% end %>
+  </div>
+    <h1 class="section-title">Rewards</h1>
+    <% @project.rewards.each do |reward| %>
+    <div class="reward-block">
+      <h3><%= number_to_currency(reward.dollar_amount) %></h3>
+      <h2><%= reward.description %></h2>
+  </div>
+      <% if current_user == nil %>
       <% elsif current_user.id == @project.user_id %>
         <p>
           <small>
@@ -37,19 +65,18 @@
         </p>
       <% end %>
     <% end %>
+
     <% if current_user != nil && current_user.id == @project.user_id %>
     <%= link_to "Add new reward", new_project_reward_path(@project) %>
     <% end %>
+
+  </div>
   </div>
 </div>
 
 
-<p><%= @project.description %></p>
-<p>Goal: <%= number_to_currency(@project.goal) %></p>
-<p>Fundraising starts: <%= @project.start_date.strftime("%A %b %d %Y") %></p>
-<p>Deadline: <%= @project.end_date.strftime("%A %b %d %Y") %></p>
-<%= link_to "Check out the owner's page", user_path(@user) %>
-<p>Total Pledged: $<%= @total_pledged %></p>
+
+
 
 
 <!-- OWNER UPDATES -->
