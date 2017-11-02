@@ -10,25 +10,26 @@ class PledgesController < ApplicationController
     @user = @project.user_id
 
     if @pledge.save
-      @claim = Claim.new
+      # find eligible rewards and save the claim if found
       @rewards = @project.rewards
-      @reward = @rewards.where("dollar_amount < ?", @pledge.dollar_amount)
-      @reward.max_by do |reward|
-        reward.dollar_amount
-      end
-      @reward = @reward.to_a
-      @reward = @reward[0]
+      eligible_rewards = @rewards.where("dollar_amount < ?", @pledge.dollar_amount)
+      if eligible_rewards.any?
+        @claim = Claim.new
+        @reward = eligible_rewards.max_by{|reward| reward.dollar_amount}
 
-      @claim = Claim.create(
-      project_id: @project.id,
-      user_id: @pledge.user.id,
-      reward_id: @reward[0]
-      )
-      redirect_to project_url(@project), notice: "You have successfully backed #{@project.title}, You've earned the reward #{@reward.description}!"
+        @claim = Claim.create(
+          project_id: @project.id,
+          user_id: @pledge.user.id,
+          reward_id: @reward.id
+        )
+        redirect_to project_url(@project), notice: "You have successfully backed #{@project.title}. You've earned the reward #{@reward.description}!"
+      else
+        # no reward, just saving pledge
+        redirect_to project_url(@project), notice: "You have successfully backed #{@project.title}."
+      end
     else
       flash.now[:alert] = @pledge.errors.full_messages.first
       render 'projects/show'
     end
   end
-
 end
