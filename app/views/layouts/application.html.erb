@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Crowdfunder</title>
+    <%= favicon_link_tag %>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <%#stylesheet_link_tag    "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css", integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb", crossorigin="anonymous"%> -->
@@ -10,32 +11,31 @@
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
     <!-- Gobal CSS -->
-    <%=stylesheet_link_tag "style.css"%>
     <%=stylesheet_link_tag "bootstrap.min.css"%>
+    <%=stylesheet_link_tag "style.css"%>
     <!--Fonts-->
   </head>
   <body>
 
 
-
     <header class="site-header">
-      <h1 class="logo"><a href="<%= root_path %>">Crowdfunder</a></h1>
+      <h1 class="logo"><%= image_tag('idea', class: 'idea-icon') %><a href="<%= root_path %>">Crowdfunder</a></h1>
 
       <nav class="site-nav">
-        <%= form_for :search,  url: search_index_path, method: :get do |f| %>
-            <div >
-              <%= f.text_field :input%>
-              <span>
-                <%= f.submit value: "Search" %>
-              </span>
+        <div >
+          <%= form_for :search,  url: search_index_path, method: :get do |f| %>
+            <%= f.text_field :input%>
+            <span>
+              <%= f.submit value: "Search" %>
+            </span>
           <% end %>
-        <% if current_user %>
-          <%= link_to "Logout", :logout, method: :delete %>
-        <% else %>
-          <%= link_to "Register", new_user_path %> |
-          <%= link_to "Login", :login %>
-        <% end %>
-      </div>
+          <% if current_user %>
+            <%= link_to "Logout", :logout, method: :delete %>
+          <% else %>
+            <%= link_to "Register", new_user_path %> |
+            <%= link_to "Login", :login %>
+          <% end %>
+        </div>
       </nav>
     </header>
 
@@ -48,6 +48,6 @@
       <%= yield %>
     </main>
 
-    
+
   </body>
 </html>
