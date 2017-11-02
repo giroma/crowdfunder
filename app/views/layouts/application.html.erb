@@ -16,9 +16,6 @@
     <!--Fonts-->
   </head>
   <body>
-    <% flash.each do |key, message| %>
-      <div class="alert alert-<%= key %>"><%= message %></div>
-    <% end %>
     <header class="site-header">
       <h1 class="logo"><%= image_tag('idea', class: 'idea-icon') %><a href="<%= root_path %>">Crowdfunder</a></h1>
       <nav class="site-nav">
@@ -39,6 +36,9 @@
           </span>
         </div>
       </nav>
+      <% flash.each do |key, message| %>
+      <div class="alert alert-<%= key %>"><%= message %></div>
+      <% end %>
     </header>
     <main>
       <%= yield %>
