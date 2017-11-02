@@ -71,7 +71,7 @@
     <h5>Fundraising starts: <%= @project.start_date.strftime("%A %b %d %Y") %></h5>
     <h5>Deadline: <%= @project.end_date.strftime("%A %b %d %Y") %></h5>
 
-    <h4>Total Pledged: <span class="label label-primary">$<%= @total_pledged.to_i %></span></h4>
+    <h4>Total Pledged: <span class="label label-primary"><%= number_to_currency(@total_pledged, precision: 0) %></span></h4>
     <div class="progress" style="width: 100%;">
   <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="<%=@progress_bar%>" aria-valuemin="0" aria-valuemax="100" style="width: <%=@progress_bar%>%;">
   </div>
